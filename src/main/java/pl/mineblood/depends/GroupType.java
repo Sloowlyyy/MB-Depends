@@ -7,7 +7,11 @@ import lombok.Getter;
  */
 public enum GroupType {
 
-    GRACZ(0);
+    GRACZ(0),
+    HELPER(10),
+    MODERATOR(11),
+    ADMIN(12),
+    OWNER(13);
 
     @Getter
     private final int id;
@@ -15,7 +19,7 @@ public enum GroupType {
     GroupType(int id) {
         this.id = id;
     }
-    public boolean checkPermission(GroupType type) {
+    public boolean can(GroupType type) {
         return id >= type.getId();
     }
 }
